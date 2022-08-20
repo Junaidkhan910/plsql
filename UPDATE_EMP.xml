@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'Cp1252'?>
+<UT>
+   <object class="oracle.dbtools.unit_test.testObjects.UtTest">
+      <test id="3daa105f-ea92-4f3e-ac97-6c9545e2f250" name="UPDATE_EMP" obj_name="UPDATE_EMP" obj_owner="IPOOL_SYSTEM" obj_type="PROCEDURE" obj_call="" src_conn_name="IdeConnections%23ipool" coverage="false">
+         <arg id="47d5a6a3-3d23-4e46-afa9-7538ad45f62f" owner="IPOOL_SYSTEM" object_name="UPDATE_EMP" object_id="79593" argument_name="P_DEPT" position="1" sequence="1" data_level="0" data_type="NUMBER" in_out="IN" data_length="22" radix="10" pls_type="NUMBER" char_length="0" char_used="0"/>
+         <arg id="d13cc713-f9e6-4f6b-a7bb-22205e1d543a" owner="IPOOL_SYSTEM" object_name="UPDATE_EMP" object_id="79593" argument_name="P_SAL" position="2" sequence="2" data_level="0" data_type="NUMBER" in_out="IN" data_length="22" radix="10" pls_type="NUMBER" char_length="0" char_used="0"/>
+         <startup id="e36bb72e-1357-4c20-aff4-c96b8e2ec20d">
+            <startup>
+               <class>oracle.dbtools.unit_test.startup.TableCopyStartup</class>
+               <name>Table or Row Copy</name>
+               <description>"TMP$UPDATE_EMP" := SELECT ROWID AS SRC$ROWID, s.* FROM "EMP" s  WHERE DEPTNO = 30</description>
+               <source>"EMP"</source>
+               <predicate>DEPTNO = 30</predicate>
+               <temp>"TMP$UPDATE_EMP"</temp>
+            </startup>
+         </startup>
+         <teardown id="c734c297-08d7-4509-8718-da164c4052a8">
+            <teardown>
+               <class>oracle.dbtools.unit_test.teardown.TableRestoreTeardown</class>
+               <name>Table or Row Restore</name>
+               <description>"TMP$UPDATE_EMP" -> "EMP"</description>
+               <source>"EMP"</source>
+               <key>PRIMARY KEY</key>
+               <temp>"TMP$UPDATE_EMP"</temp>
+               <predicate>DEPTNO = 30</predicate>
+               <dropTempTable>yes</dropTempTable>
+            </teardown>
+         </teardown>
+         <test_impl id="c4518f95-dd22-420b-a48c-74145c6cd019" test_id="3daa105f-ea92-4f3e-ac97-6c9545e2f250" name="Test Implementation 1" expected_ret="Success" expected_err="ANY">
+            <parm argId="47d5a6a3-3d23-4e46-afa9-7538ad45f62f" utiId="c4518f95-dd22-420b-a48c-74145c6cd019" input_value="&lt;?xml version = '1.0' encoding = 'UTF-8'?>&#xD;&#xA;&lt;DataValue name=&quot;P_DEPT&quot;>30&lt;/DataValue>" test_out_val="true"/>
+            <parm argId="d13cc713-f9e6-4f6b-a7bb-22205e1d543a" utiId="c4518f95-dd22-420b-a48c-74145c6cd019" input_value="&lt;?xml version = '1.0' encoding = 'UTF-8'?>&#xD;&#xA;&lt;DataValue name=&quot;P_SAL&quot;>600&lt;/DataValue>" test_out_val="true"/>
+            <validation id="54514472-60f2-48c0-a987-366a1b52e1a0" apply="true">
+               <validation>
+                  <class>oracle.dbtools.unit_test.process_validation.BooleanFunction</class>
+                  <name>Boolean function</name>
+                  <description>-- Please replace this code with either a boolean        
+-- expression like this:        
+--     RETURN FALSE;        
+-- or else a code block which returns a boolean value        
+-- similar to the following:        
+DECLARE        
+    l_count NUMBER;        
+BEGIN        
+    SELECT count(*) INTO l_count FROM EMP;        
+    IF l_count &lt;> 0        
+    THEN        
+        RETURN TRUE;        
+    ELSE        
+        RETURN FALSE;        
+    END IF;        
+END;        
+</description>
+                  <code>-- Please replace this code with either a boolean        
+-- expression like this:        
+--     RETURN FALSE;        
+-- or else a code block which returns a boolean value        
+-- similar to the following:        
+DECLARE        
+    l_count NUMBER;        
+BEGIN        
+    SELECT count(*) INTO l_count FROM EMP;        
+    IF l_count &lt;> 0        
+    THEN        
+        RETURN TRUE;        
+    ELSE        
+        RETURN FALSE;        
+    END IF;        
+END;        
+</code>
+               </validation>
+            </validation>
+         </test_impl>
+      </test>
+   </object>
+</UT>
